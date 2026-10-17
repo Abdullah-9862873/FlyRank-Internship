@@ -75,16 +75,16 @@ clean story, which is exactly what this card grades against. With
 
 ---
 
-## Session 4 — live mode, first honest failure
+## Session 5 — live mode, first honest failure
 
 Set `GEMINI_API_KEY` and ran `evals.py` in live mode: **E2 FAIL**, and its
 detail text was the *mock grader's* wording — meaning the "live" run had
 quietly fallen back offline. E1/E3 still showed PASS because their checks only
-counted ledger entries. Fixed structurally: **E1/E3 now assert the provider**
-of each grade (`provider == "gemini"` in live mode). An eval that can pass
-while the thing it tests never ran is a broken eval.
+counted ledger entries. Fixed structurally: **E1/E3 now assert the grader's
+provider** (must be `gemini` or `groq`, never `mock`, in live mode). An eval
+that can pass while the thing it tests never ran is a broken eval.
 
-## Session 5 — the model name was dead
+## Session 6 — the model name was dead
 
 With the evals hardened, the real error surfaced in `coach_events.jsonl`:
 **HTTP 404 — `gemini-2.0-flash` no longer exists** (the first two sessions had
@@ -93,7 +93,7 @@ errors only logged the bare status line). Fixed diagnostics: failures now log
 the response body. Called the models endpoint with the key, switched to
 `gemini-3.8-flash` per Google's own replacement message.
 
-## Session 6 — free-tier rate limit, and waiting instead of lying
+## Session 7 — free-tier rate limit, and waiting instead of lying
 
 E1 passed live, E2/E3 fell back to mock again. New error in the event log:
 **HTTP 429 — quota exceeded**: E1's six calls emptied the per-minute window,
@@ -104,11 +104,50 @@ Changes:
   provider before considering fallback (logged as `provider_throttled`).
   Quiet downgrade on throttle is the silent-failure mode guardrail designs
   are meant to prevent.
-- `coach.py` paces questions by 7s, so 10 API calls for a 5-question session
-  fit inside one quota window — the session never stalls mid-run.
+- `coach.py` paces questions by 7s, spreading the 10 API calls of a
+  5-question session across quota window boundaries instead of bursting
+  into a 429 on camera.
+- After repeated test runs exhausted even the per-day quota, added a
+  **300s circuit breaker**: once Gemini hard-fails on quota, later calls go
+  straight to Groq instead of sleeping 65s on every question.
 
 Re-ran live: **E1–E5 all PASS**, E2 reading "invented metric scored 0 with
 'not in my notes'". Receipts: `work/outputs/coach_evals.json` (`mode: "live"`).
+
+---
+
+## Session 8 — two independent reviewer passes, then fix
+
+Asked two parallel reviewers to audit the code separately: one for
+robustness/correctness, one for spec compliance and clean code. Between them
+they filed ~35 findings; the ones I acted on, in order of severity:
+
+- **Crash on live network timeout** (caught on camera mid-recording):
+  `TimeoutError` from a socket read escaped `call_llm`'s except list and
+  killed the session with a traceback. Now: catch-all around each provider
+  call + graceful session stop when providers are down. Re-ran E1–E5 live:
+  all PASS.
+- **Non-atomic ledger writes** — a crash mid-write could truncate
+  `coach_log.json`; now writes to a temp file and `os.replace`s, and a
+  corrupt ledger is quarantined to `.corrupt` instead of silently wiped.
+- **Windows cp1252 pipes** — topic headings contain `→`, so `--list-topics`
+  and eval subprocesses could die on `UnicodeEncodeError`. Now reconfigures
+  stdout/stderr to UTF-8 with `errors="replace"` at startup.
+- **E5 was too soft**: its forced failure was a plain `RuntimeError`, so the
+  429 wait/retry path was never exercised and a mock fallback could pass it.
+  Now: force-fail raises a simulated HTTP 429 (test hook skips the real 65s
+  sleep), and live E5 requires the fallback to land on **groq** specifically.
+- Also fixed: `Ctrl+C` traceback, `{"question": null}` printing as the string
+  "None", `int(float("inf"))` OverflowError in score coercion, uncaught
+  `TimeoutExpired` aborting the eval suite, Gemini key moved from URL to
+  header so it cannot leak into the event log, shared system-prompt constant
+  (DRY), mock questions now unique within a run so E4's no-duplicate
+  assertion is meaningful offline too.
+- Groq-specific repairs from the same period: its edge blocks urllib's
+  default user-agent (error 1010), and the old `llama-3.3-70b` model name was
+  retired — current model is `openai/gpt-oss-120b`.
+
+Full re-run after the fixes: **E1–E5 all PASS** (live).
 
 ---
 
@@ -117,28 +156,37 @@ Re-ran live: **E1–E5 all PASS**, E2 reading "invented metric scored 0 with
 1. **Ledger format.** Spec wrote "one JSON line per answer" and E4 as
    "exactly 10 lines". Implemented as a JSON **array** in `coach_log.json` so
    the receipt file is valid JSON for anyone loading it; E4 now asserts
-   exactly 10 *entries* with the same schema fields.
-2. **Two extra internal functions.** `generate_question` split out of the
-   grading path (one thing per function), plus `read_ledger`/`weak_topics` —
-   the latter is what actually delivers the spec's "finds the concepts that
-   stopped sticking" promise, so it earned its place.
-3. **Added `coach_events.jsonl`.** Not in the spec. It's the receipts file
+   exactly 10 *entries*, no duplicate questions inside a session, with the
+   spec's schema fields plus a `provider` column (added so live/mock
+   provenance is auditable).
+2. **Extra internal functions beyond the spec's 4 tools.** The spec's four
+   tools map to `list_topics`, `read_section`, `generate_question`,
+   `grade_answer`/`write_ledger`. On top of those the agent calls
+   `read_ledger` and `weak_topics` (the latter delivers the spec's "finds the
+   concepts that stopped sticking" promise — it earns its place), and evals
+   use `find_topic` for discovery. Six agent-reachable functions, not four.
+3. **Notebooks dropped from the data sources.** The spec listed
+   `notebooks/*.ipynb` markdown cells as a source; the whitelist covers the
+   two curated docs + skills instead, because raw notebook cells are not
+   clean quiz material. Not silent — listed here.
+4. **Added `coach_events.jsonl`.** Not in the spec. It's the receipts file
    for provider fallback and guardrail events — without it, E5 has nothing to
    verify and the "silent failure" case would be invisible.
-4. **E1 eval runs 3 questions**, session default stays 5 (spec) — keeps the
+5. **E1 eval runs 3 questions**, session default stays 5 (spec) — keeps the
    harness fast; the ledger-integrity eval still exercises a full 5-question
    session twice.
-5. **Cut from MVP:** the monthly/weekly weak-topic summary. Narrowest core
+6. **Cut from MVP:** the monthly/weekly weak-topic summary. Narrowest core
    job only, per FL-07 ("one full end-to-end run before adding anything").
 
 ## What broke / what I'd still do
 
 - Broke: hardcoded heading match (S1), heading-level filter too narrow (S2),
-  mock grading branch on the wrong prompt half (S3), dead model name (S5),
-  quota-throttle fallback masking live failures (S6). All fixed and
-  re-verified by re-running the exact command that caught each one.
+  mock grading branch on the wrong prompt half (S3), dead model name (S6),
+  quota-throttle fallback masking live failures (S7), TimeoutError crash on
+  live networks + soft E5 (S8). All fixed and re-verified by re-running the
+  exact command that caught each one.
 - Live E1–E5: all passing (`mode: "live"` in `coach_evals.json`).
 - Still pending: the 2-minute raw screen recording of a live session.
-- Known limitation: in offline mode the deterministic model repeats the same
-  question template within a session. Real mode varies questions; offline mode
+- Known limitation: in offline mode the deterministic model varies questions
+  only by a drill counter; real mode varies them properly. Offline mode
   exists for the harness, not for study quality.

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,6 +21,13 @@ READABLE_DOCS = [
 READABLE_SKILL_DIRS = [REPO_ROOT / "skills"]
 
 LEDGER_FIELDS = {"ts", "topic", "question", "score", "provider"}
+
+# Shared coach identity: grounding rules live in ONE place (DRY).
+COACH_SYSTEM_PROMPT = (
+    "You are a study coach grounded ONLY in the provided section of Abdullah's "
+    "FlyRank notes. Ask one question at a time. Prefer failure modes: leakage, "
+    "window alignment, rate columns, claim vocabulary. No pep talk filler."
+)
 
 
 class GuardrailRefusal(Exception):
@@ -58,11 +66,18 @@ def find_topic(fragment: str) -> str | None:
     return None
 
 
+def _read_text(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as error:
+        raise GuardrailRefusal(f"unreadable (not valid UTF-8): {path}") from error
+
+
 def _headings_of(path: Path) -> list[str]:
     if not path.exists():
         return []
     topics = []
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in _read_text(path).splitlines():
         match = re.match(r"^(#{2,3})\s+(.*)$", line)
         if match:
             heading = match.group(2).strip()
@@ -76,11 +91,12 @@ def read_section(topic_id: str) -> str:
     relative_path, heading = topic_id.rsplit("#", 1)
     path = (REPO_ROOT / relative_path).resolve()
     if not _is_readable(path):
+        record_event({"guardrail": "read_refused", "path": relative_path})
         raise GuardrailRefusal(f"refused read outside whitelist: {relative_path}")
     if not path.exists():
         raise GuardrailRefusal(f"unknown document: {relative_path}")
 
-    lines = path.read_text(encoding="utf-8").splitlines()
+    lines = _read_text(path).splitlines()
     heading_re = re.compile(r"^(#{1,6})\s+(.*)$")
     start = None
     level = 0
@@ -106,23 +122,19 @@ def read_section(topic_id: str) -> str:
 
 
 def generate_question(section_text: str, topic_id: str) -> dict:
-    system_prompt = (
-        "You are a study coach grounded ONLY in the provided section of Abdullah's "
-        "FlyRank notes. Ask one question at a time. Prefer failure modes: leakage, "
-        "window alignment, rate columns, claim vocabulary. "
-        'Reply with ONLY a JSON object: {"question": "..."}.'
-    )
+    system_prompt = COACH_SYSTEM_PROMPT + ' Reply with ONLY a JSON object: {"question": "..."}.'
     user_prompt = f"Topic: {topic_id}\nSECTION:\n{section_text}"
     reply = call_llm(system_prompt, user_prompt)
     payload = _parse_json_object(reply.text, fallback_key="question", fallback_text=reply.text)
+    # {"question": null} must become "", not the string "None".
+    payload["question"] = payload.get("question") or ""
     payload["provider"] = reply.provider
     return payload
 
 
 def grade_answer(section_text: str, topic_id: str, question: str, answer: str) -> dict:
-    system_prompt = (
-        "You are a study coach grounded ONLY in the provided section of Abdullah's "
-        "FlyRank notes. Grade the ANSWER 0 (wrong) 1 (right idea, incomplete) "
+    system_prompt = COACH_SYSTEM_PROMPT + (
+        " Grade the ANSWER 0 (wrong) 1 (right idea, incomplete) "
         "2 (correct and complete). If the topic is not in the section, score 0 and "
         "say 'not in my notes'. Never invent FlyRank facts. "
         'Reply with ONLY JSON: {"score": 0, "citation": "...", "note": "..."}'
@@ -166,7 +178,8 @@ def _parse_json_object(text: str, fallback_key: str, fallback_text: str) -> dict
 def _coerce_score(value: object) -> int:
     try:
         score = int(float(value))  # type: ignore[arg-type]
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
+        # OverflowError: json allows Infinity/1e999 and int(float("inf")) raises.
         return 0
     return max(0, min(2, score))
 
@@ -182,7 +195,10 @@ def write_ledger(topic_id: str, question: str, score: int, provider: str) -> dic
         "provider": provider,
     }
     entries.append(entry)
-    LEDGER_PATH.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+    # Atomic replace: a crash mid-write must never truncate existing history.
+    temp_path = LEDGER_PATH.with_suffix(".json.tmp")
+    temp_path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+    os.replace(temp_path, LEDGER_PATH)
     return entry
 
 
@@ -191,7 +207,12 @@ def read_ledger() -> list[dict]:
         return []
     try:
         data = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, UnicodeDecodeError, OSError):
+        # Quarantine a corrupt ledger instead of silently overwriting it later.
+        try:
+            os.replace(LEDGER_PATH, LEDGER_PATH.with_suffix(".json.corrupt"))
+        except OSError:
+            pass
         return []
     if not isinstance(data, list):
         return []

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import io
 import json
 import os
 import time
@@ -34,18 +35,26 @@ def load_env_file() -> None:
     env_path = REPO_ROOT / ".env"
     if not env_path.exists():
         return
-    for line in env_path.read_text().splitlines():
+    for line in env_path.read_text(encoding="utf-8-sig").splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip())
+        value = value.strip()
+        # Tolerate GEMINI_API_KEY="..." and trailing comments in .env files.
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1].strip()
+        os.environ.setdefault(key.strip(), value)
 
 
 def record_event(event: dict) -> None:
-    EVENTS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with EVENTS_PATH.open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps(event, sort_keys=True) + "\n")
+    # Best-effort telemetry: a failed write must never take the session down.
+    try:
+        EVENTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with EVENTS_PATH.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(event, sort_keys=True) + "\n")
+    except OSError:
+        pass
 
 
 def _post_json(url: str, headers: dict[str, str], payload: dict) -> dict:
@@ -64,17 +73,26 @@ def call_gemini(system_prompt: str, user_prompt: str) -> str:
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY not set")
     if os.environ.get("COACH_FORCE_GEMINI_FAIL") == "1":
-        raise RuntimeError("simulated Gemini failure (COACH_FORCE_GEMINI_FAIL=1)")
+        # Simulated quota failure: a real-shaped 429 so the wait/circuit/fallback
+        # path is exercised by E5, not a plain RuntimeError that bypasses it.
+        raise urllib.error.HTTPError(
+            "https://generativelanguage.googleapis.com/simulated",
+            429,
+            "simulated quota failure",
+            {},
+            io.BytesIO(b'{"error":{"message":"COACH_FORCE_GEMINI_FAIL=1"}}'),
+        )
     url = (
         "https://generativelanguage.googleapis.com/v1beta/models/"
-        f"{GEMINI_MODEL}:generateContent?key={api_key}"
+        f"{GEMINI_MODEL}:generateContent"
     )
     payload = {
         "systemInstruction": {"parts": [{"text": system_prompt}]},
         "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
         "generationConfig": {"temperature": 0.2, "maxOutputTokens": 1024},
     }
-    body = _post_json(url, {}, payload)
+    # Key travels in a header, never the URL, so it cannot leak into logs.
+    body = _post_json(url, {"x-goog-api-key": api_key}, payload)
     return body["candidates"][0]["content"]["parts"][0]["text"]
 
 
@@ -106,7 +124,7 @@ def call_groq(system_prompt: str, user_prompt: str) -> str:
 
 def call_mock(system_prompt: str, user_prompt: str) -> str:
     # Deterministic offline model: enough to exercise the full loop and E1/E4/E5
-    # evals without a key. Grade heuristic = "answers longer than 5 words earn 1".
+    # evals without a key.
     if "GRADE THIS ANSWER" in user_prompt:
         answer_block = user_prompt.split("\nANSWER:", 1)[-1]
         answer = answer_block.split("\nGRADE THIS ANSWER")[0].strip()
@@ -129,15 +147,22 @@ def call_mock(system_prompt: str, user_prompt: str) -> str:
     if "not-in-notes" in topic:
         return json.dumps({"question": "What does my notes say about this topic?"})
     readable_topic = topic.rsplit("#", 1)[-1]
+    # Counter keeps mock questions unique inside one run so E4's no-duplicate
+    # assertion stays meaningful in offline mode too.
+    global _mock_question_number
+    _mock_question_number += 1
     return json.dumps(
         {
             "question": (
                 f"In one sentence, what is the single most important rule "
                 f"my notes give about '{readable_topic}'? Answer with the rule, "
-                f"not an example."
+                f"not an example. (drill #{_mock_question_number})"
             )
         }
     )
+
+
+_mock_question_number = 0
 
 
 def call_llm(system_prompt: str, user_prompt: str) -> LlmReply:
@@ -176,9 +201,12 @@ def call_llm(system_prompt: str, user_prompt: str) -> LlmReply:
                     and not rate_limited_once
                 ):
                     # Quota window: one patient wait beats silent downgrade to mock.
+                    # The E5 test hook skips the sleep - a simulated 429 must not
+                    # cost a real minute of wall-clock time.
                     rate_limited_once = True
                     record_event({"provider_throttled": provider, "wait_seconds": RATE_LIMIT_WAIT_SECONDS})
-                    time.sleep(RATE_LIMIT_WAIT_SECONDS)
+                    if os.environ.get("COACH_FORCE_GEMINI_FAIL") != "1":
+                        time.sleep(RATE_LIMIT_WAIT_SECONDS)
                     continue
                 failures.append(f"{provider}: {detail}")
                 record_event({"provider_failed": provider, "error": detail})

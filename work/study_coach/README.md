@@ -12,10 +12,12 @@ Nothing to install — Python 3.10+ standard library only.
 # offline (no key, deterministic local grader)
 python work/study_coach/coach.py --mock --questions 5
 
-# live (Gemini free tier)
-# 1. get a key: https://aistudio.google.com/apikey  (free, ~1 min)
-# 2. add one line to the .env file at the repo root — never a code cell:
+# live (Gemini free tier, Groq as automatic fallback)
+# 1. get a Gemini key: https://aistudio.google.com/apikey  (free, ~1 min)
+#    and/or a Groq key: https://console.groq.com  (free, ~1 min)
+# 2. add the lines to the .env file at the repo root — never a code cell:
 #      GEMINI_API_KEY=your-key-here
+#      GROQ_API_KEY=your-key-here
 # 3. run:
 python work/study_coach/coach.py --questions 5
 
@@ -52,11 +54,13 @@ python work/study_coach/evals.py
 
 Writes `work/outputs/coach_evals.json`. With no key it runs offline and marks
 the two content evals honestly (`PASS-OFFLINE` / `SKIP-NEEDS-KEY`) instead of
-faking a pass; with `GEMINI_API_KEY` set, E1–E3 run live.
+faking a pass; with `GEMINI_API_KEY` or `GROQ_API_KEY` set, E1–E3 run live
+and assert the grader was a real model, never the mock.
 
 ## Guardrails (hard rules, enforced in code)
 
-- Reads only `docs/*.md` and `skills/**/SKILL.md` — anything under `data/` is refused.
+- Reads only `docs/data-dictionary.md`, `docs/ml-intern-dataset-and-lane-guide.md`,
+  and `skills/**/SKILL.md` — anything under `data/` is refused.
 - Writes only `work/outputs/coach_log.json` + `coach_events.jsonl`.
 - Never runs the pipeline, never invents FlyRank facts ("not in my notes" path).
 - API keys from env/`.env` only — `.env` is gitignored, keys never enter a cell.

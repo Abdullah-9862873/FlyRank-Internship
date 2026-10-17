@@ -1328,5 +1328,208 @@
     "question": "Why does the guide advise against using the `_sample` table for experiments when your label predicts 'what happens next', and how does this relate to data leakage and proper window alignment?",
     "score": 0,
     "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:17:07+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #1)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:18:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "What potential data leakage issues arise if you experiment on the `_sample` table, given its composition of the last month of data?",
+    "score": 0,
+    "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:18:32+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Why does the guide advise against using the `_sample` table for experiments, and how could doing so cause data leakage in your predictive modeling?",
+    "score": 0,
+    "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:18:43+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Given that the freshest 3 days are intentionally omitted (cut off at 2026-06-30) and the `_sample` table contains only the last month of data, how could using the `_sample` table for model training introduce temporal leakage, and what window alignment strategy should you follow to avoid peeking at future information?",
+    "score": 0,
+    "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:19:54+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #1)",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:54+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #2)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:54+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #3)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:54+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #4)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:54+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #5)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:55+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #1)",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:55+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #2)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:55+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #3)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:55+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #4)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:19:55+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #5)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:20:00+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Why is using the `_sample` table for experiments considered a leakage risk when your label predicts \"what happens next\"?",
+    "score": 0,
+    "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:23:40+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Given that the freshest 3 days are intentionally omitted (cut off at 2026\u201106\u201130) and the `_sample` table contains only the last month of data, how could using the `_sample` table for model training introduce temporal leakage, and what window alignment strategy should you follow to avoid peeking at future information?",
+    "score": 0,
+    "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:23:52+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "What leakage risk does using the `_sample` table for experiments introduce when your label predicts \"what happens next\"?",
+    "score": 0,
+    "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:24:04+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Why does the guide advise avoiding the `_sample` table for experiments, and how could using it lead to data leakage?",
+    "score": 0,
+    "provider": "groq"
+  },
+  {
+    "ts": "2026-10-17T19:25:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #1)",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #2)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #3)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #4)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #5)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:20+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #1)",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:20+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #2)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:20+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #3)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:20+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #4)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:20+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example. (drill #5)",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T19:25:28+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Why does the guide advise avoiding the `_sample` table for experiments when your label predicts \"what happens next\"?",
+    "score": 0,
+    "provider": "groq"
   }
 ]

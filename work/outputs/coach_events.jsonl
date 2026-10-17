@@ -1163,3 +1163,174 @@
 {"error": "simulated Gemini failure (COACH_FORCE_GEMINI_FAIL=1)", "provider_failed": "gemini"}
 {"fallback_reason": "gemini: simulated Gemini failure (COACH_FORCE_GEMINI_FAIL=1)", "provider": "groq", "waited_on_rate_limit": false}
 {"eval_run": "live", "results": ["E1:PASS", "E2:PASS", "E3:PASS", "E4:PASS", "E5:PASS"]}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"provider_throttled": "gemini", "wait_seconds": 65}
+{"error": "HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider_failed": "gemini"}
+{"circuit_open": "gemini", "skip_seconds": 300}
+{"fallback_reason": "gemini: HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"provider_throttled": "gemini", "wait_seconds": 65}
+{"error": "HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider_failed": "gemini"}
+{"circuit_open": "gemini", "skip_seconds": 300}
+{"fallback_reason": "gemini: HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider": "groq", "waited_on_rate_limit": false}
+{"guardrail": "injection_attempt_in_answer"}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"provider_throttled": "gemini", "wait_seconds": 65}
+{"error": "HTTP Error 429: simulated quota failure :: {\"error\":{\"message\":\"COACH_FORCE_GEMINI_FAIL=1\"}}", "provider_failed": "gemini"}
+{"circuit_open": "gemini", "skip_seconds": 300}
+{"fallback_reason": "gemini: HTTP Error 429: simulated quota failure :: {\"error\":{\"message\":\"COACH_FORCE_GEMINI_FAIL=1\"}}", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"eval_run": "live", "results": ["E1:PASS", "E2:PASS", "E3:PASS", "E4:PASS", "E5:PASS"]}
+{"provider_throttled": "gemini", "wait_seconds": 65}
+{"error": "HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider_failed": "gemini"}
+{"circuit_open": "gemini", "skip_seconds": 300}
+{"fallback_reason": "gemini: HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"provider_throttled": "gemini", "wait_seconds": 65}
+{"error": "HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider_failed": "gemini"}
+{"circuit_open": "gemini", "skip_seconds": 300}
+{"fallback_reason": "gemini: HTTP Error 429: Too Many Requests :: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a", "provider": "groq", "waited_on_rate_limit": false}
+{"guardrail": "injection_attempt_in_answer"}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock", "waited_on_rate_limit": false}
+{"provider_throttled": "gemini", "wait_seconds": 65}
+{"error": "HTTP Error 429: simulated quota failure :: {\"error\":{\"message\":\"COACH_FORCE_GEMINI_FAIL=1\"}}", "provider_failed": "gemini"}
+{"circuit_open": "gemini", "skip_seconds": 300}
+{"fallback_reason": "gemini: HTTP Error 429: simulated quota failure :: {\"error\":{\"message\":\"COACH_FORCE_GEMINI_FAIL=1\"}}", "provider": "groq", "waited_on_rate_limit": false}
+{"fallback_reason": "gemini: skipped (recent quota 429, circuit breaker open)", "provider": "groq", "waited_on_rate_limit": false}
+{"eval_run": "live", "results": ["E1:PASS", "E2:PASS", "E3:PASS", "E4:PASS", "E5:PASS"]}

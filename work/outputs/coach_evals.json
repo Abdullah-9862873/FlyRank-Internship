@@ -1,6 +1,6 @@
 {
   "mode": "live",
-  "ts": "2026-10-17T18:55:16+00:00",
+  "ts": "2026-10-17T19:25:28+00:00",
   "results": [
     {
       "id": "E1",
@@ -30,7 +30,7 @@
       "id": "E5",
       "name": "rate-limit fallback",
       "status": "PASS",
-      "detail": "Gemini forced to fail -> fallback completed the run"
+      "detail": "Gemini 429 simulated -> wait/retry path hit -> fallback completed the run"
     }
   ]
 }
