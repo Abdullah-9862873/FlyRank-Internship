@@ -168,7 +168,7 @@ def call_llm(system_prompt: str, user_prompt: str) -> LlmReply:
                     provider=provider,
                     fallback_reason=failures[-1] if failures else None,
                 )
-            except (urllib.error.URLError, urllib.error.HTTPError, RuntimeError, KeyError, json.JSONDecodeError) as error:
+            except Exception as error:  # noqa: BLE001 - any provider failure must fall through, never crash the session
                 detail = _error_detail(error)
                 if (
                     isinstance(error, urllib.error.HTTPError)

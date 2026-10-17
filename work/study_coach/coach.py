@@ -61,7 +61,11 @@ def run_session(topic_id: str, question_count: int) -> int:
 
     total = 0
     for number in range(1, question_count + 1):
-        question_payload = generate_question(section_text, topic_id)
+        try:
+            question_payload = generate_question(section_text, topic_id)
+        except RuntimeError as failure:
+            print(f"  ! model providers unavailable: {failure}")
+            break
         question = str(question_payload.get("question", "")).strip()
         if not question:
             print("  ! no question generated - stopping early")
@@ -71,7 +75,12 @@ def run_session(topic_id: str, question_count: int) -> int:
         if answer.lower() in {"quit", "q", "exit"}:
             print("Session ended early - logged answers stay in the ledger.")
             break
-        grade = grade_answer(section_text, topic_id, question, answer)
+        try:
+            grade = grade_answer(section_text, topic_id, question, answer)
+        except RuntimeError as failure:
+            print(f"  ! could not grade this answer (providers down): {failure}")
+            print("  Answered entries so far stay in the ledger.")
+            break
         score = int(grade["score"])
         total += score
         write_ledger(topic_id, question, score, str(grade.get("provider", "unknown")))
