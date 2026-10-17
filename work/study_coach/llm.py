@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -10,9 +11,10 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 EVENTS_PATH = REPO_ROOT / "work" / "outputs" / "coach_events.jsonl"
 
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemini-3.8-flash"
 GROQ_MODEL = "llama-3.3-70b-versatile"
 HTTP_TIMEOUT_SECONDS = 30
+RATE_LIMIT_WAIT_SECONDS = 65  # free-tier quota windows reset per minute
 
 
 @dataclass
@@ -133,20 +135,45 @@ def call_llm(system_prompt: str, user_prompt: str) -> LlmReply:
     )
     failures: list[str] = []
     for provider, call in attempts:
-        try:
-            text = call(system_prompt, user_prompt)
-            record_event(
-                {
-                    "provider": provider,
-                    "fallback_reason": failures[-1] if failures else None,
-                }
-            )
-            return LlmReply(
-                text=text,
-                provider=provider,
-                fallback_reason=failures[-1] if failures else None,
-            )
-        except (urllib.error.URLError, urllib.error.HTTPError, RuntimeError, KeyError, json.JSONDecodeError) as error:
-            failures.append(f"{provider}: {error}")
-            record_event({"provider_failed": provider, "error": str(error)})
+        rate_limited_once = False
+        while True:
+            try:
+                text = call(system_prompt, user_prompt)
+                record_event(
+                    {
+                        "provider": provider,
+                        "fallback_reason": failures[-1] if failures else None,
+                        "waited_on_rate_limit": rate_limited_once,
+                    }
+                )
+                return LlmReply(
+                    text=text,
+                    provider=provider,
+                    fallback_reason=failures[-1] if failures else None,
+                )
+            except (urllib.error.URLError, urllib.error.HTTPError, RuntimeError, KeyError, json.JSONDecodeError) as error:
+                detail = _error_detail(error)
+                if (
+                    isinstance(error, urllib.error.HTTPError)
+                    and error.code == 429
+                    and not rate_limited_once
+                ):
+                    # Quota window: one patient wait beats silent downgrade to mock.
+                    rate_limited_once = True
+                    record_event({"provider_throttled": provider, "wait_seconds": RATE_LIMIT_WAIT_SECONDS})
+                    time.sleep(RATE_LIMIT_WAIT_SECONDS)
+                    continue
+                failures.append(f"{provider}: {detail}")
+                record_event({"provider_failed": provider, "error": detail})
+                break
     raise RuntimeError("all providers failed: " + " | ".join(failures))
+
+
+def _error_detail(error: Exception) -> str:
+    detail = str(error)
+    if isinstance(error, urllib.error.HTTPError):
+        try:
+            detail = f"{error} :: {error.read().decode('utf-8')[:200]}"
+        except Exception:  # noqa: BLE001 - body read is best-effort diagnostics
+            pass
+    return detail

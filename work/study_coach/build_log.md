@@ -75,6 +75,43 @@ clean story, which is exactly what this card grades against. With
 
 ---
 
+## Session 4 — live mode, first honest failure
+
+Set `GEMINI_API_KEY` and ran `evals.py` in live mode: **E2 FAIL**, and its
+detail text was the *mock grader's* wording — meaning the "live" run had
+quietly fallen back offline. E1/E3 still showed PASS because their checks only
+counted ledger entries. Fixed structurally: **E1/E3 now assert the provider**
+of each grade (`provider == "gemini"` in live mode). An eval that can pass
+while the thing it tests never ran is a broken eval.
+
+## Session 5 — the model name was dead
+
+With the evals hardened, the real error surfaced in `coach_events.jsonl`:
+**HTTP 404 — `gemini-2.0-flash` no longer exists** (the first two sessions had
+blamed headings and "silent fallback" instead of the model, because HTTP
+errors only logged the bare status line). Fixed diagnostics: failures now log
+the response body. Called the models endpoint with the key, switched to
+`gemini-3.8-flash` per Google's own replacement message.
+
+## Session 6 — free-tier rate limit, and waiting instead of lying
+
+E1 passed live, E2/E3 fell back to mock again. New error in the event log:
+**HTTP 429 — quota exceeded**: E1's six calls emptied the per-minute window,
+the next two got throttled and silently downgraded.
+
+Changes:
+- `call_llm` does **one patient 65s wait on 429 and retries** the same
+  provider before considering fallback (logged as `provider_throttled`).
+  Quiet downgrade on throttle is the silent-failure mode guardrail designs
+  are meant to prevent.
+- `coach.py` paces questions by 7s, so 10 API calls for a 5-question session
+  fit inside one quota window — the session never stalls mid-run.
+
+Re-ran live: **E1–E5 all PASS**, E2 reading "invented metric scored 0 with
+'not in my notes'". Receipts: `work/outputs/coach_evals.json` (`mode: "live"`).
+
+---
+
 ## Deviations from the FL-06 spec (all documented, none silent)
 
 1. **Ledger format.** Spec wrote "one JSON line per answer" and E4 as
@@ -97,10 +134,11 @@ clean story, which is exactly what this card grades against. With
 ## What broke / what I'd still do
 
 - Broke: hardcoded heading match (S1), heading-level filter too narrow (S2),
-  mock grading branch on the wrong prompt half (S3). All three fixed and
-  re-verified by re-running the same command that caught them.
-- Still pending until capture: live E1–E3 (needs `GEMINI_API_KEY` at run
-  time) and the 2-minute raw screen recording of a live session.
+  mock grading branch on the wrong prompt half (S3), dead model name (S5),
+  quota-throttle fallback masking live failures (S6). All fixed and
+  re-verified by re-running the exact command that caught each one.
+- Live E1–E5: all passing (`mode: "live"` in `coach_evals.json`).
+- Still pending: the 2-minute raw screen recording of a live session.
 - Known limitation: in offline mode the deterministic model repeats the same
   question template within a session. Real mode varies questions; offline mode
   exists for the harness, not for study quality.

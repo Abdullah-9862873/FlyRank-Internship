@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import time
 from pathlib import Path
 
 from llm import load_env_file
@@ -16,6 +17,9 @@ from tools import (
 )
 
 DEFAULT_QUESTION_COUNT = 5
+# Free Gemini tier throttles per-minute; pacing keeps a 5-question session
+# (10 API calls) inside one quota window instead of sleeping 65s on camera.
+PAUSE_BETWEEN_QUESTIONS_SECONDS = 7
 
 
 def parse_args() -> argparse.Namespace:
@@ -75,6 +79,8 @@ def run_session(topic_id: str, question_count: int) -> int:
         if grade.get("citation"):
             print(f"  notes: {grade['citation']}")
         print()
+        if number < question_count:
+            time.sleep(PAUSE_BETWEEN_QUESTIONS_SECONDS)
 
     print(f"Session done. Points: {total}/{question_count * 2}")
     print("Ledger: work/outputs/coach_log.json")
