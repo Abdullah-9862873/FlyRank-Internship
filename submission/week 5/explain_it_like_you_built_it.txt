@@ -1,0 +1,48 @@
+Explain It Like You Built It — Week 5, General AI Fluency
+Assignment: how one real piece of my build works
+Piece I picked: making index.html go live with GitHub Pages
+
+--------------------------------------------------------------------------------
+
+How pushing a file made my page live on the internet
+
+What I actually built was one file: index.html. It is a plain text file — no
+backend, no database, nothing that runs. It is just instructions that tell a
+browser "put this name in the tab, draw this heading, draw this paragraph."
+
+The thing I did not understand at first was how that file becomes a webpage.
+The answer is that GitHub is doing two jobs at once, and I had only ever used
+one of them. The first job is git hosting: it stores my code and my history.
+The second job is GitHub Pages, a free static-hosting service built into the
+same site. Pages reads a file straight out of a repo and serves it over the
+web. It is a separate feature that I had to switch on myself — it is not a file
+in the repo, it is a setting I clicked once under Settings > Pages: "serve from
+branch main, folder root." That choice is why the homepage of my site is just
+index.html sitting at the top level instead of buried in a folder.
+
+Once that switch is on, deploying is nothing more than pushing. I run git push,
+the commit lands on main, GitHub sees a file changed in the published folder,
+and it queues a small publish job. Roughly a minute later the exact bytes of my
+index.html are live at https://abdullah-9862873.github.io/FlyRank-Internship/.
+
+What happens when someone visits that URL: their browser sends a request,
+GitHub's servers reply with the contents of my file, and the browser draws the
+page. There is no server running my code 24/7 — nothing of mine executes
+anywhere. That is also why the site is free, why it cannot break from traffic,
+and why it dies the moment the repo goes private. This is also why updates are
+not instant: the publish job is asynchronous, so if I push and see nothing, the
+answer is wait a minute, not panic.
+
+The reason I picked this stack in Week 4 was exactly this: one git push is the
+entire deploy pipeline, there are no dependencies to update, and the whole thing
+is a text file I can read. Now I can say not just that it works, but why.
+
+--------------------------------------------------------------------------------
+
+What I would get asked if questioned, and my answers:
+- "What triggers a deploy?" — A commit that changes a file in the published
+  folder. Not the push itself, the change to the served file.
+- "Where is the Pages config stored?" — On GitHub's side, as a repo setting.
+  That is why a fresh clone does not carry it.
+- "Is this hosting or git?" — Both live in one product but are separate
+  features; Pages is just reading from git, not running it.
