@@ -12,7 +12,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 EVENTS_PATH = REPO_ROOT / "work" / "outputs" / "coach_events.jsonl"
 
 GEMINI_MODEL = "gemini-3.8-flash"
-GROQ_MODEL = "llama-3.3-70b-versatile"
+GROQ_MODEL = "openai/gpt-oss-120b"
 HTTP_TIMEOUT_SECONDS = 30
 RATE_LIMIT_WAIT_SECONDS = 65  # free-tier quota windows reset per minute
 GEMINI_BACKOFF_SECONDS = 300  # after a hard 429, stop burning waits for 5 min
@@ -92,7 +92,15 @@ def call_groq(system_prompt: str, user_prompt: str) -> str:
         "temperature": 0.2,
         "max_tokens": 1024,
     }
-    body = _post_json(url, {"Authorization": f"Bearer {api_key}"}, payload)
+    body = _post_json(
+        url,
+        {
+            "Authorization": f"Bearer {api_key}",
+            # Groq's edge blocks urllib's default "Python-urllib" agent (1010).
+            "User-Agent": "flyrank-study-coach/1.0",
+        },
+        payload,
+    )
     return body["choices"][0]["message"]["content"]
 
 
