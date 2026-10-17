@@ -1,0 +1,300 @@
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"guardrail": "injection_attempt_in_answer"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"eval_run": "offline", "results": ["E1:PASS-OFFLINE", "E2:SKIP-NEEDS-KEY", "E3:PASS-OFFLINE", "E4:PASS", "E5:PASS"]}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"guardrail": "injection_attempt_in_answer"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"eval_run": "offline", "results": ["E1:PASS-OFFLINE", "E2:SKIP-NEEDS-KEY", "E3:PASS-OFFLINE", "E4:PASS", "E5:PASS"]}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"guardrail": "injection_attempt_in_answer"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"error": "GEMINI_API_KEY not set", "provider_failed": "gemini"}
+{"error": "GROQ_API_KEY not set", "provider_failed": "groq"}
+{"fallback_reason": "groq: GROQ_API_KEY not set", "provider": "mock"}
+{"eval_run": "offline", "results": ["E1:PASS-OFFLINE", "E2:SKIP-NEEDS-KEY", "E3:PASS-OFFLINE", "E4:PASS", "E5:PASS"]}

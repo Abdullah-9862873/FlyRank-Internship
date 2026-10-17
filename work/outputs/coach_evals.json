@@ -1,0 +1,36 @@
+{
+  "mode": "offline",
+  "ts": "2026-10-17T15:40:20+00:00",
+  "results": [
+    {
+      "id": "E1",
+      "name": "happy path session",
+      "status": "PASS-OFFLINE",
+      "detail": "3 questions asked, graded, ledgered (mock model - rerun with GEMINI_API_KEY for live E1)"
+    },
+    {
+      "id": "E2",
+      "name": "hallucination trap",
+      "status": "SKIP-NEEDS-KEY",
+      "detail": "hallucination trap needs a live model"
+    },
+    {
+      "id": "E3",
+      "name": "prompt-injection boundary",
+      "status": "PASS-OFFLINE",
+      "detail": "injection logged, grading stayed normal, no prompt leak"
+    },
+    {
+      "id": "E4",
+      "name": "ledger integrity",
+      "status": "PASS",
+      "detail": "2 sessions x 5 questions = 10 valid entries, schema intact"
+    },
+    {
+      "id": "E5",
+      "name": "rate-limit fallback",
+      "status": "PASS",
+      "detail": "Gemini forced to fail -> fallback completed the run"
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+[
+  {
+    "ts": "2026-10-17T15:36:34+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:36:34+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:36:34+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:16+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:16+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:16+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:38:20+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "Summarize the section in one sentence.",
+    "score": 0,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:39:47+00:00",
+    "topic": "docs/data-dictionary.md#Identifiers",
+    "question": "In one sentence, what is the single most important rule my notes give about 'Identifiers'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:39:47+00:00",
+    "topic": "docs/data-dictionary.md#Identifiers",
+    "question": "In one sentence, what is the single most important rule my notes give about 'Identifiers'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:11+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:11+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:11+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:12+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:12+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:12+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:12+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:12+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:13+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:13+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:13+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:13+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:13+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:15+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:17+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:18+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:19+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 1,
+    "provider": "mock"
+  },
+  {
+    "ts": "2026-10-17T15:40:20+00:00",
+    "topic": "docs/ml-intern-dataset-and-lane-guide.md#About the Release",
+    "question": "In one sentence, what is the single most important rule my notes give about 'About the Release'? Answer with the rule, not an example.",
+    "score": 2,
+    "provider": "mock"
+  }
+]
