@@ -15,6 +15,11 @@ GEMINI_MODEL = "gemini-3.8-flash"
 GROQ_MODEL = "llama-3.3-70b-versatile"
 HTTP_TIMEOUT_SECONDS = 30
 RATE_LIMIT_WAIT_SECONDS = 65  # free-tier quota windows reset per minute
+GEMINI_BACKOFF_SECONDS = 300  # after a hard 429, stop burning waits for 5 min
+
+# Circuit breaker: once Gemini hard-fails on quota, later calls go straight
+# to the next provider instead of sleeping 65s on every single question.
+_gemini_backoff_until = 0.0
 
 
 @dataclass
@@ -128,6 +133,7 @@ def call_mock(system_prompt: str, user_prompt: str) -> str:
 
 
 def call_llm(system_prompt: str, user_prompt: str) -> LlmReply:
+    global _gemini_backoff_until
     attempts = (
         ("gemini", call_gemini),
         ("groq", call_groq),
@@ -135,6 +141,9 @@ def call_llm(system_prompt: str, user_prompt: str) -> LlmReply:
     )
     failures: list[str] = []
     for provider, call in attempts:
+        if provider == "gemini" and time.time() < _gemini_backoff_until:
+            failures.append("gemini: skipped (recent quota 429, circuit breaker open)")
+            continue
         rate_limited_once = False
         while True:
             try:
@@ -165,6 +174,9 @@ def call_llm(system_prompt: str, user_prompt: str) -> LlmReply:
                     continue
                 failures.append(f"{provider}: {detail}")
                 record_event({"provider_failed": provider, "error": detail})
+                if provider == "gemini" and isinstance(error, urllib.error.HTTPError) and error.code == 429:
+                    _gemini_backoff_until = time.time() + GEMINI_BACKOFF_SECONDS
+                    record_event({"circuit_open": "gemini", "skip_seconds": GEMINI_BACKOFF_SECONDS})
                 break
     raise RuntimeError("all providers failed: " + " | ".join(failures))
 
