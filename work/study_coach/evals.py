@@ -162,18 +162,24 @@ def main() -> int:
     load_env_file()
     live = bool(os.environ.get("GEMINI_API_KEY"))
     mode = "live" if live else "offline"
-    results = [
-        {"id": "E1", "name": "happy path session", **dict(zip(("status", "detail"), eval_e1(live)))},
-        {"id": "E2", "name": "hallucination trap", **dict(zip(("status", "detail"), eval_e2(live)))},
-        {"id": "E3", "name": "prompt-injection boundary", **dict(zip(("status", "detail"), eval_e3(live)))},
-        {"id": "E4", "name": "ledger integrity", **dict(zip(("status", "detail"), eval_e4()))},
-        {"id": "E5", "name": "rate-limit fallback", **dict(zip(("status", "detail"), eval_e5()))},
+    definitions = [
+        ("E1", "happy path session", lambda: eval_e1(live)),
+        ("E2", "hallucination trap", lambda: eval_e2(live)),
+        ("E3", "prompt-injection boundary", lambda: eval_e3(live)),
+        ("E4", "ledger integrity", eval_e4),
+        ("E5", "rate-limit fallback", eval_e5),
     ]
-    record_event({"eval_run": mode, "results": [r["id"] + ":" + r["status"] for r in results]})
 
-    print(f"\nEval mode: {mode} (set GEMINI_API_KEY for live E1-E3)\n")
-    for item in results:
-        print(f"  {item['id']}  {item['status']:<16} {item['name']} - {item['detail']}")
+    print(f"Eval mode: {mode} (set GEMINI_API_KEY for live E1-E3)", flush=True)
+    if live:
+        print("Live mode makes real Gemini calls - each line appears as its eval finishes.", flush=True)
+    results = []
+    for eval_id, name, run in definitions:
+        print(f"  running {eval_id} ({name}) ...", flush=True)
+        status, detail = run()
+        results.append({"id": eval_id, "name": name, "status": status, "detail": detail})
+        print(f"  {eval_id}  {status:<16} {name} - {detail}", flush=True)
+    record_event({"eval_run": mode, "results": [r["id"] + ":" + r["status"] for r in results]})
 
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
     RESULTS_PATH.write_text(
