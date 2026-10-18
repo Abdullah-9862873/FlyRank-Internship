@@ -1,0 +1,90 @@
+{
+  "notebook": "work/notebooks/w07_action_playbook.ipynb",
+  "split": {
+    "group": "client_id",
+    "test_size": 0.2,
+    "seed": 42
+  },
+  "metrics": {
+    "base_rate_overall": 0.5420666666666667,
+    "base_rate_test": 0.5109524582184002,
+    "grouped": {
+      "n_test": 6163,
+      "n_test_clients": 7,
+      "lr_auc": 0.5731338858377218,
+      "rf_auc": 0.6025327343994143,
+      "lr_f1": 0.6444605358435916,
+      "rf_f1": 0.6214689265536724,
+      "baseline_p10": 0.8,
+      "lr_p10": 0.6,
+      "rf_p10": 0.7,
+      "baseline_p20": 0.8,
+      "lr_p20": 0.7,
+      "rf_p20": 0.7,
+      "baseline_p50": 0.7,
+      "lr_p50": 0.68,
+      "rf_p50": 0.6
+    },
+    "random": {
+      "lr_auc": 0.654720964282066,
+      "rf_auc": 0.7568627679382665
+    },
+    "memorization_gap_auc": {
+      "lr": 0.0816,
+      "rf": 0.1543
+    }
+  },
+  "queue": {
+    "rows": 30000,
+    "actions": {
+      "REVIEW": 18471,
+      "NO_ACTION": 7994,
+      "REOPTIMIZE": 3518,
+      "REFRESH": 17
+    },
+    "reason_codes": {
+      "moderate_traffic_overlap": 18471,
+      "insufficient_signal": 7994,
+      "high_traffic_weak_position": 3518,
+      "stale_visible": 17
+    }
+  },
+  "decay_buckets": [
+    {
+      "staleness_bucket": "0-90d",
+      "pages": 20655,
+      "decline_rate": 0.512
+    },
+    {
+      "staleness_bucket": "91-180d",
+      "pages": 9171,
+      "decline_rate": 0.611
+    },
+    {
+      "staleness_bucket": "181-365d",
+      "pages": 169,
+      "decline_rate": 0.467
+    },
+    {
+      "staleness_bucket": "365d+",
+      "pages": 5,
+      "decline_rate": 0.6
+    }
+  ],
+  "guardrail_checks": {
+    "refresh_rows_all_stale_180plus": true,
+    "refresh_rows_all_visible_500plus": true,
+    "no_position_zero_rows_in_refresh": true,
+    "no_365dplus_rows_in_refresh": true
+  },
+  "monitoring": {
+    "checked_against": "starter dataset v30k, 2026 snapshot",
+    "base_rate_current": 0.5421,
+    "base_rate_retrain_trigger": "shift > 0.05 absolute on a fresh labeled batch",
+    "p20_floor": 0.5,
+    "impressions_median_current": 731.0,
+    "impressions_drift_trigger": "median moves > 30% from current",
+    "new_client_rule": "clients with < 90 days history are excluded until a full window exists",
+    "retrain_cadence": "when any trigger fires, or every 6 months whichever comes first"
+  }
+}
