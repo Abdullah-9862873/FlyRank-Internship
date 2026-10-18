@@ -1,0 +1,57 @@
+# One-shot reminder: Study Coach v2 case study due (2026-11-15).
+# Fires monthly on the 15th at 09:00 UTC; the year guard makes it one-shot for 2026.
+# Evidence trail for FL-10 "The Plan to Keep Building": the reminder lives in the repo,
+# not just in someone's head. workflow_dispatch lets you test-fire it manually.
+name: reminder-study-coach-v2
+
+on:
+  schedule:
+    - cron: "0 9 15 11 *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  open-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: One-shot guard (2026 only) + open the nudge issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const now = new Date();
+            if (now.getUTCFullYear() !== 2026 && context.eventName !== 'workflow_dispatch') {
+              core.info('Not 2026 — skipping one-shot reminder.');
+              return;
+            }
+            const title = 'Study Coach v2: build the spaced-repetition scheduler + write the case study';
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+            if (existing.data.some(i => i.title === title)) {
+              core.info('Nudge issue already open — not duplicating.');
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: [
+                'Calendar nudge set on 2026-10-18 (FL-10 "plan to keep building").',
+                '',
+                'The named next piece: **Study Coach v2** — weekly summary + spaced-repetition',
+                'scheduler over `work/outputs/coach_log.json` (the FL-06 feature the MVP cut).',
+                '',
+                'Steps: read `work/KEEP_BUILDING_PLAN.md`, build the scheduler, run evals,',
+                'write the three-beat case study (problem / what I did / what came of it),',
+                'add the card to Portfolio_Site ThingsBuilt, update `work/FL_TRACK_INDEX.md`.',
+                '',
+                '_Auto-opened by `.github/workflows/reminder-study-coach-v2.yml`._',
+              ].join('\n'),
+              labels: ['reminder'],
+            });
+            core.info('Nudge issue created.');
