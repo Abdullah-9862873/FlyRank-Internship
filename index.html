@@ -1,12 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abdullah Sultan</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Which Pages Are Declining? A Ranked Refresh Queue from 30,000 Production Search Pages</title>
+  <meta name="description" content="Can observed search and behavior signals rank content pages by their odds of declining? A rule baseline, two models, a client-grouped validation, and an honest action playbook — built on FlyRank production search data." />
+  <link rel="canonical" href="https://abdullah-9862873.github.io/FlyRank-Internship/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://abdullah-9862873.github.io/FlyRank-Internship/" />
+  <meta property="og:title" content="Which Pages Are Declining? A Ranked Refresh Queue from 30,000 Production Search Pages" />
+  <meta property="og:description" content="Rule baseline vs logistic regression vs random forest on client-grouped data — with the memorization gap measured, not hidden." />
+  <meta name="twitter:card" content="summary" />
+  <style>
+    :root {
+      --text: #1a2332;
+      --muted: #5a6b80;
+      --accent: #2456a6;
+      --rule: #d9e1ea;
+      --bg-soft: #f4f7fa;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 0 20px 80px; }
+    header.paper { padding: 56px 0 8px; }
+    .kicker { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+    h1 { font-size: 30px; line-height: 1.25; margin: 0 0 16px; font-weight: 700; }
+    .byline { color: var(--muted); font-size: 15px; margin: 0 0 4px; }
+    .byline a { color: var(--accent); text-decoration: none; }
+    nav.toc { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0; margin: 24px 0 36px; font-size: 15px; }
+    nav.toc ol { margin: 0; padding-left: 22px; }
+    nav.toc li { margin: 2px 0; }
+    nav.toc a { color: var(--accent); text-decoration: none; }
+    nav.toc a:hover { text-decoration: underline; }
+    .abstract { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 18px 22px; margin: 0 0 40px; }
+    .abstract h2 { margin: 0 0 8px; font-size: 18px; }
+    .abstract p { margin: 0; font-size: 16px; }
+    h2 { font-size: 22px; margin: 48px 0 12px; line-height: 1.3; }
+    h2 .num { color: var(--muted); font-weight: 600; margin-right: 8px; }
+    h3 { font-size: 17px; margin: 28px 0 8px; }
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 0 0 14px; padding-left: 24px; }
+    li { margin: 4px 0; }
+    figure { margin: 26px 0; }
+    figure img { max-width: 100%; height: auto; display: block; border: 1px solid var(--rule); }
+    figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+    figcaption b { color: var(--text); }
+    table { border-collapse: collapse; width: 100%; margin: 20px 0; font-size: 15px; font-variant-numeric: tabular-nums; }
+    th, td { border: 1px solid var(--rule); padding: 8px 12px; text-align: left; }
+    th { background: var(--bg-soft); font-weight: 600; }
+    td.num, th.num { text-align: right; }
+    .footnote { font-size: 14px; color: var(--muted); }
+    code { font-family: var(--mono); font-size: .9em; background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; }
+    footer.paper { margin-top: 64px; border-top: 1px solid var(--rule); padding-top: 24px; font-size: 15px; color: var(--muted); }
+    footer.paper a { color: var(--accent); }
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 19px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Abdullah Sultan</h1>
-  <p>Coming soon.</p>
+  <div class="wrap">
+
+    <header class="paper">
+      <p class="kicker">Research paper &middot; FlyRank AI Internship, Machine Learning track &middot; October 2026</p>
+      <h1>Which Pages Are Declining? A Ranked Refresh Queue from 30,000 Production Search Pages</h1>
+      <p class="byline">Abdullah Sultan &middot; <a href="https://abdullah-sultan.netlify.app/">portfolio</a> &middot; <a href="https://github.com/Abdullah-9862873/FlyRank-Internship">code &amp; notebooks</a></p>
+    </header>
+
+    <nav class="toc">
+      <ol>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#introduction">Introduction / problem statement</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#results">Results (model vs baseline)</a></li>
+        <li><a href="#limitations">Limitations &amp; honest framing</a></li>
+        <li><a href="#recommendations">Ranked recommendations (action playbook)</a></li>
+        <li><a href="#reproducibility">Reproducibility</a></li>
+        <li><a href="#acknowledgments">Acknowledgments &amp; data credit</a></li>
+      </ol>
+    </nav>
+
+    <section class="abstract" id="abstract">
+      <h2>Abstract</h2>
+      <p>Content teams managing tens of thousands of production pages cannot review everything by hand, so the question is whether observed search and behavior signals can rank pages by their odds of declining and turn weekly refresh work into a queue instead of a guess. I study this on the anonymized FlyRank ML internship dataset &mdash; 30,000 production pages across 32 clients, shipped as 90-day aggregates with a decline label computed from the last 30 days versus the previous 30. A rule baseline (stale &ge;180 days and visible) is compared with logistic regression and a random forest under a client-grouped split, plus a deliberate leakage audit that scores a random split only to measure memorization. The random forest reaches precision@10 of 0.70 versus the baseline's 0.50 on the grouped test set, but its overall AUC is 0.603 &mdash; weak &mdash; and the random-split AUC of 0.757 collapses by 0.154 when whole clients are held out, a memorization gap this paper reports rather than hides. The output is therefore a decision-support artifact: a 30,000-page queue with reason codes, a human-review protocol, and monitoring triggers &mdash; not an autopilot, and not a claim that refreshing a page recovers traffic.</p>
+    </section>
+
+    <section id="introduction">
+      <h2><span class="num">1.</span>Introduction / problem statement</h2>
+      <p>A content portfolio of 30,000 pages has a triage problem no analyst can solve by scrolling: which handful of pages deserve a human's attention this week? The industry reflex is a freshness rule &mdash; refresh whatever is old and still gets impressions. That rule is sensible and it is also incomplete: in this panel, 51.2% of pages updated in the last 90 days are declining anyway, so staleness alone is far from destiny.</p>
+      <p>This paper supports one decision: <b>the order of a weekly review queue</b>. A human opens the top of the queue, reads the evidence attached to each row, and decides. Nothing here edits, publishes, or deletes a page. That boundary is deliberate &mdash; the label measures association in a production panel, not the effect of an intervention.</p>
+    </section>
+
+    <section id="data">
+      <h2><span class="num">2.</span>Data</h2>
+      <p>The study uses the <b>anonymized starter release</b> of the FlyRank ML internship dataset (internally &ldquo;v30k&rdquo;): one row per content page, <b>30,000 pages</b>, <b>32 clients</b>, 45 shipped columns. All windows are relative &mdash; 90-day behavior aggregates, and a label that compares the last 30 days to the previous 30. Absolute dates were removed in anonymization, so no calendar range can or should be named.</p>
+      <h3>Label</h3>
+      <p><code>trend_direction == &quot;down&quot;</code> becomes a binary decline label. The base rate is <b>54.2%</b> &mdash; slightly better than a coin flip is the bar any model must clear.</p>
+      <h3>What is excluded, and why</h3>
+      <ul>
+        <li><code>trend_direction</code>, <code>trend_pct</code> &mdash; label-derived; never features.</li>
+        <li><code>provider_used</code>, <code>model_used</code> &mdash; production metadata about how content was made, not signals about how it performs.</li>
+        <li>Client identity, page URLs, queries, and all free text &mdash; the release is anonymized and this work stays public-safe: no client names, addresses, or raw queries appear in any notebook, figure, or this page.</li>
+      </ul>
+      <h3>Known gaps in the release</h3>
+      <p><code>word_count</code> is missing on 7,699 pages (25.7%) &mdash; feedly-type articles carry no keyword data at all. <code>avg_position</code> is 0 on 1,205 pages, which the data dictionary defines as <em>no data</em>, not rank zero; a <code>has_position</code> flag models this instead of reading 0 as a literal position.</p>
+      <table>
+        <tr><th>Archetype</th><th class="num">Pages</th><th class="num">Decline rate</th></tr>
+        <tr><td>Keyword article</td><td class="num">27,207</td><td class="num">56.1%</td></tr>
+        <tr><td>Feedly article (no keyword data)</td><td class="num">2,096</td><td class="num">28.7%</td></tr>
+        <tr><td>Comparison article</td><td class="num">697</td><td class="num">57.2%</td></tr>
+      </table>
+    </section>
+
+    <section id="methodology">
+      <h2><span class="num">3.</span>Methodology</h2>
+      <p><b>Assumptions.</b> Recent aggregates carry signal about near-term direction; pages are comparable across clients once client identity is held out of evaluation; and the honest unit of generalization is a <em>client</em>, not a page.</p>
+      <p><b>Features (12).</b> Ten 90-day aggregates (impressions, clicks, sessions, engaged sessions, average position, CTR, engagement rate, content age, days since last update, word count) plus the two missingness flags. Nothing label-derived enters the feature set.</p>
+      <p><b>Baseline.</b> The <code>stale_visible</code> rule from the baseline notebook: stale &ge;180 days <em>and</em> &ge;500 impressions, ranked by impressions. It is the comparison column in every table &mdash; a model that cannot beat a rule the team could have written on a whiteboard does not earn a queue.</p>
+      <p><b>Models.</b> Logistic regression on standardized features, and a random forest (200 trees, depth 10). Every seed is fixed at 42.</p>
+      <p><b>Validation design.</b> A client-grouped 80/20 split: the test set is 6,163 pages belonging to 7 clients the models never saw in training. Metrics are precision@10/20/50 (the queue metric), ROC AUC, and F1. A second, random split is scored for one purpose only &mdash; to <em>measure</em> how much client memorization inflates the optimistic number.</p>
+      <p><b>Leakage checks.</b> The validation audit notebook verified: no label columns or target encodings in features; no cross-row aggregates computed with label access; feature window overlaps the label window by 30 days (disclosed as low severity &mdash; behavior in month three partially contains the trend measured in month three); and the random-vs-grouped AUC gap quantifies client memorization directly.</p>
+    </section>
+
+    <section id="results">
+      <h2><span class="num">4.</span>Results (model vs baseline, same split)</h2>
+      <table>
+        <tr><th>Method</th><th class="num">P@10</th><th class="num">P@20</th><th class="num">P@50</th><th class="num">F1</th><th class="num">AUC</th></tr>
+        <tr><td>Baseline (rule)</td><td class="num">0.50</td><td class="num">0.45</td><td class="num">0.62</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+        <tr><td>Logistic regression</td><td class="num">0.60</td><td class="num">0.70</td><td class="num">0.68</td><td class="num">0.644</td><td class="num">0.573</td></tr>
+        <tr><td><b>Random forest</b></td><td class="num"><b>0.70</b></td><td class="num"><b>0.70</b></td><td class="num">0.60</td><td class="num">0.621</td><td class="num">0.603</td></tr>
+      </table>
+      <p class="footnote">Client-grouped test set, 6,163 pages from 7 unseen clients. Base rate on this split: 51.1%.</p>
+
+      <figure>
+        <img src="work/figures/fig_precision_at_k.png" alt="Bar chart of precision at 10, 20, and 50 for baseline, logistic regression, and random forest on the grouped test set" />
+        <figcaption><b>Takeaway:</b> the forest beats the rule where a queue lives &mdash; at the top (P@10 0.70 vs 0.50) &mdash; while the rule holds up deeper in the list. The model earns priority ordering, not blanket trust.</figcaption>
+      </figure>
+
+      <p>The number that changes how everything else is read: on a <em>random</em> split the forest scores AUC 0.757; on the grouped split it scores <b>0.603</b>. The 0.154 collapse is client memorization &mdash; the forest was partly recognizing clients from their traffic signatures rather than learning decline itself. The grouped numbers are the only ones reported as results.</p>
+
+      <figure>
+        <img src="work/figures/fig_memorization_gap.png" alt="Bar chart comparing random-split AUC against grouped AUC for both models, showing the memorization gap" />
+        <figcaption><b>Takeaway:</b> random splits overstate this model badly (RF: 0.757 &rarr; 0.603). Grouped-by-client validation is not optional for portfolio work; it is the difference between a demo and a claim.</figcaption>
+      </figure>
+
+      <p class="footnote"><b>Footnote on baseline stability.</b> The baseline's score is a step function with thousands of tied rows; top-k selection among ties depends on numpy's sort internals, and P@10 was observed between 0.50 and 0.80 across environments. The values above match the canonical modeling receipts; the instability itself is listed under limitations.</p>
+    </section>
+
+    <section id="limitations">
+      <h2><span class="num">5.</span>Limitations &amp; honest framing</h2>
+      <ol>
+        <li><b>Weak discrimination.</b> Grouped AUC 0.603 is barely above chance. This model orders attention; it does not know the future.</li>
+        <li><b>Client memorization is measured, not eliminated.</b> The 0.154 gap says features carry client identity. Held-out-client performance is the ceiling reported here.</li>
+        <li><b>Feature/label window overlap.</b> The 90-day aggregates include the 30 days the label is measured in &mdash; disclosed, low severity, still disclosed.</li>
+        <li><b>Decay is not monotonic.</b> The freshness intuition (&ldquo;older is worse&rdquo;) fails in this panel: the 91&ndash;180-day bucket declines most (61.1%), and the 181&ndash;365-day (n=169) and 365-day+ (n=5) buckets are too thin to quote.</li>
+      </ol>
+      <figure>
+        <img src="work/figures/fig_decline_by_staleness.png" alt="Bar chart of decline rate by staleness bucket with sample sizes labeled" />
+        <figcaption><b>Takeaway:</b> decline peaks around three to six months stale; the old tail is almost empty (n=5 beyond a year), so the data cannot say what happens there. Thin buckets are labeled, not smoothed away.</figcaption>
+      </figure>
+      <ol start="5">
+        <li><b>No causal claim.</b> This is a production panel with no interventions. Nothing here shows that refreshing a page recovers traffic &mdash; only that certain pages are observed declining.</li>
+        <li><b>Single snapshot.</b> The release is cross-sectional; a time-based holdout is not possible, so concept drift can be monitored but not backtested.</li>
+        <li><b>Baseline tie-instability.</b> Rule-based top-k depends on tie-breaking across environments (see results footnote).</li>
+      </ol>
+    </section>
+
+    <section id="recommendations">
+      <h2><span class="num">6.</span>Ranked recommendations (action playbook)</h2>
+      <p>The deployed artifact of this paper is a weekly queue: all 30,000 pages ranked by the forest's decline probability, each row stamped with a reason code a human can check in two minutes. The model sets <em>priority</em>; the rule sets <em>what kind of look</em> a page needs.</p>
+      <table>
+        <tr><th>Reason code</th><th>Action</th><th class="num">Pages</th><th>Rule</th></tr>
+        <tr><td><code>insufficient_signal</code></td><td>NO_ACTION</td><td class="num">7,994</td><td>&lt;100 impressions &mdash; too little traffic to separate decline from noise</td></tr>
+        <tr><td><code>stale_visible</code></td><td>REFRESH</td><td class="num">17</td><td>stale &ge;180d and impressions &ge;500 &mdash; the baseline rule itself</td></tr>
+        <tr><td><code>high_traffic_weak_position</code></td><td>REOPTIMIZE</td><td class="num">3,518</td><td>&ge;1,000 impressions and average position &ge;20 &mdash; title/description work first</td></tr>
+        <tr><td><code>moderate_traffic_overlap</code></td><td>REVIEW</td><td class="num">18,471</td><td>everything else &mdash; model unsure, a human decides</td></tr>
+      </table>
+
+      <figure>
+        <img src="work/figures/fig_queue_actions.png" alt="Bar chart of queue composition by action across all 30,000 pages" />
+        <figcaption><b>Takeaway:</b> the queue concentrates &mdash; only 17 pages meet the strict refresh rule while 3,518 need ranking work and 18,471 sit in a human-decides band. Honest queues are mostly &ldquo;look here if you have time,&rdquo; not a factory of tasks.</figcaption>
+      </figure>
+
+      <h3>Human review is mandatory, automation is not offered</h3>
+      <ul>
+        <li>Before any refresh: confirm the page still exists in the CMS, check for external causes (seasonality, retired products), and check brand constraints.</li>
+        <li>Never automated: publishing edits, deleting or redirecting pages, anything on position-zero (no-data) rows, and the thin staleness buckets.</li>
+      </ul>
+      <h3>Monitoring &amp; retrain triggers</h3>
+      <ul>
+        <li>Base rate shifts more than 5 points from 54.2% on a fresh labeled batch &rarr; retrain before trusting the queue.</li>
+        <li>Precision@20 on the newest labeled slice drops below 0.5 &rarr; the top of the queue stopped earning attention.</li>
+        <li>Median impressions moves more than 30% &rarr; traffic distribution shifted; refit, don't just recalibrate.</li>
+        <li>Clients with under 90 days of history are excluded until a full window exists; retrain on any trigger, or every six months, whichever comes first.</li>
+      </ul>
+    </section>
+
+    <section id="reproducibility">
+      <h2><span class="num">7.</span>Reproducibility</h2>
+      <ul>
+        <li>Repository: <a href="https://github.com/Abdullah-9862873/FlyRank-Internship">github.com/Abdullah-9862873/FlyRank-Internship</a> &mdash; every notebook, figure, and metrics receipt is committed.</li>
+        <li>Notebook chain: task framing &rarr; data contract &rarr; EDA &amp; signal tests &rarr; baseline &rarr; model &rarr; validation audit &rarr; action playbook &rarr; <code>work/notebooks/capstone.ipynb</code> (the runnable twin of this page).</li>
+        <li>All seeds fixed at 42; the grouped split, metrics, and queue are deterministic given the release. The queue CSV and baseline CSV are regenerable by running the notebooks (excluded from git by the repo's leak-guard by design; the metrics JSON is committed).</li>
+        <li>Environment note: metric values were verified in the canonical internship environment (Python 3.10). Baseline P@k is tie-breaking sensitive across numpy versions &mdash; re-runs in other environments may show the documented 0.5&ndash;0.8 range on the baseline row only.</li>
+      </ul>
+    </section>
+
+    <section id="acknowledgments">
+      <h2><span class="num">8.</span>Acknowledgments &amp; data credit</h2>
+      <p><b>Built on the <a href="https://flyrank.ai">FlyRank</a> ML Internship dataset</a> &mdash; anonymized production search data released for this program. The data's realness is the point: 30,000 live pages, not a toy set.</p>
+      <p>Thanks to the FlyRank internship program for the data, the task ladder, and the review process that insisted on baselines, grouped validation, and honest claims at every step.</p>
+      <p class="footnote">This work was completed as educational coursework through the FlyRank AI Internship (Machine Learning track, July 2026 cohort). It is not employment, and the views are the author's own.</p>
+    </section>
+
+    <footer class="paper">
+      <p>Abdullah Sultan &middot; October 2026 &middot; <a href="https://github.com/Abdullah-9862873/FlyRank-Internship">repo</a> &middot; <a href="https://abdullah-sultan.netlify.app/">portfolio</a></p>
+      <p>All identifiers in the data are anonymized; this page contains no client names, URLs, or queries.</p>
+    </footer>
+
+  </div>
 </body>
 </html>
